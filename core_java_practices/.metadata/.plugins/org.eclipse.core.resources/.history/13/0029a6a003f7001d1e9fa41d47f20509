@@ -1,0 +1,40 @@
+package utils;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import com.shop.core.Product;
+
+public interface IOUtils {
+//add static method to store sorted  list of products in the text file using buffer
+	static void storeProductDetails(String fileName,List<Product> products) throws IOException
+	{
+		//create chain of I/O strms Java App ---> PW -->FW ---> Text File
+		try(PrintWriter pw=new PrintWriter(new FileWriter(fileName)))
+		{
+			products.forEach(pw::println);//p -> pw.println(p)
+		}//pw.close [..........]
+	}
+	
+	static List<Product> restoreProductDetails(String filename)
+	{
+		String s=null;
+		Product p;
+		try(BufferedReader in=new BufferedReader(new FileReader(filename)))
+		{
+			while(s!=null)
+			{
+				
+				p=io.lines();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
